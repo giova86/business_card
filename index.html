@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connettiti con Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #007bff; /* Blu vibrante per il bordo foto e gradiente nome */
+            --background-dark: #1a1a1d; /* Sfondo molto scuro */
+            --text-light: #f8f9fa; /* Testo chiaro */
+            --button-base-color: #2c3e50; /* Un blu/grigio scuro per i bottoni */
+            --button-hover-color: #34495e; /* Colore più scuro al passaggio */
+            --border-radius: 58px;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            margin: 0;
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Pagina a schermo intero */
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            flex-direction: column;
+            overflow-x: hidden; /* Assicura che non ci sia scroll orizzontale */
+            overflow-y: auto; /* Permette lo scroll verticale solo se necessario */
+            position: relative;
+        }
+
+        /* Effetto particelle di sfondo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Assicura che copra l'intera altezza del body */
+            background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(108, 117, 125, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 15s infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.05); }
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Stile per la foto profilo e il nome */
+        .profile-section {
+            margin-bottom: 30px;
+            margin-left: 15px;
+            margin-right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+            margin-bottom: 18px;
+            animation: profileGlow 2s infinite alternate;
+        }
+
+        @keyframes profileGlow {
+            from { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
+            to { box-shadow: 0 0 30px rgba(0, 123, 255, 1); }
+        }
+
+        .profile-name {
+            font-size: 2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--primary-color), #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 0 0 8px rgba(0, 198, 255, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Stile uniforme per tutti i bottoni */
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 18px 25px;
+            background-color: var(--button-base-color); /* Colore base uniforme */
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: background-color var(--transition-speed) ease,
+                        transform var(--transition-speed) ease,
+                        box-shadow var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Ombra più scura per contrasto */
+            /* width: calc(100% - 7.5px); */
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+            min-height: 65px;
+        }
+
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-button:hover::before {
+            left: 100%;
+        }
+
+        .social-button:hover {
+            background-color: var(--button-hover-color); /* Colore al hover uniforme */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Ombra più grande al hover */
+        }
+
+        .social-button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contenitore per l'icona circolare */
+        .icon-circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            /* background-color: rgba(255, 255, 255, 0.1); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            backdrop-filter: blur(10px);
+            /* border: 2px solid var(--primary-color); */
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+
+            /* border: 1px solid rgba(0, 0, 0, 0.2); */
+        }
+
+        /* Stile per le icone all'interno del cerchio */
+        .icon-circle i {
+            font-size: 1.1em;
+            /* color: white; */
+        }
+
+        /* Contenitore per il testo centrato */
+        .button-text {
+            flex: 1;
+            text-align: center;
+            margin-right: 47px; /* Compensa la larghezza dell'icona per centrare perfettamente */
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-name {
+                font-size: 2em;
+            }
+            .social-links {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+            .social-button {
+                font-size: 0.9em;
+                padding: 15px 10px;
+                width: calc(50% - 5px); /* Due bottoni per riga con gap */
+                min-width: 0;
+            }
+            .icon-circle {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+            }
+            .icon-circle i {
+                font-size: 1em;
+            }
+            .button-text {
+                margin-right: 38px; /* Aggiustato per le dimensioni ridotte */
+                font-size: 0.9em;
+            }
+        }
+        .circle-image {
+            width: 100%;        /* L'immagine occupa il 100% della larghezza del suo contenitore */
+            height: 100%;       /* L'immagine occupa il 100% dell'altezza del suo contenitore */
+            object-fit: cover;  /* L'immagine coprirà il cerchio, ritagliando le parti in eccesso se necessario */
+            border-radius: 50%; /* Rende l'immagine perfettamente circolare */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+
+        <div class="profile-section">
+            <img src="static/gbocchi.png" alt="La tua foto profilo" class="profile-pic">
+            <h1 class="profile-name">Giovanni Bocchi, Ph.D.</h1>
+            <h3>Data Scientist</h3>
+        </div>
+
+        <div class="social-links">
+
+            <a href="https://giova86.github.io/portfolio/" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/gbocchi.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">Portfolio</div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/giovannibocchi" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/linkedin.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">LinkedIn</div>
+            </a>
+
+            <a href="https://github.com/giova86" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/github.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">GitHub</div>
+            </a>
+
+            <a href="https://www.instagram.com/ilgiova86" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/ig.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">Instagram</div>
+            </a>
+
+            <a href="https://www.facebook.com/gbocchi1" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/facebook.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">Facebook</div>
+            </a>
+            <a href="https://x.com/gbocchi86" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/x.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">X</div>
+            </a>
+            <a href="https://online-go.com/player/1808298/" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/go.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">OGS</div>
+            </a>
+            <a href="https://www.chess.com/member/jtitor" target="_blank" class="social-button">
+                <div class="icon-circle">
+                  <img src="static/chess.png" alt="Portfolio Icon" class="circle-image">
+                </div>
+                <div class="button-text">Chess.com</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
