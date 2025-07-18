@@ -23,24 +23,23 @@
         }
 
         html {
+            height: 100%;
             overflow-x: hidden;
             width: 100%;
         }
 
         body {
             margin: 0;
-            padding: 10px;
+            padding: 20px;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Pagina a schermo intero */
-            max-height: 100vh; /* Pagina a schermo intero */
+            min-height: 100vh;
             background-color: var(--background-dark);
             color: var(--text-light);
             flex-direction: column;
-            overflow-x: hidden; /* Assicura che non ci sia scroll orizzontale */
-            overflow-y: auto; /* Permette lo scroll verticale solo se necessario */
+            overflow-x: hidden;
             position: relative;
             width: 100%;
             max-width: 100vw;
@@ -49,11 +48,11 @@
         /* Effetto particelle di sfondo */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; /* Assicura che copra l'intera altezza del body */
+            height: 100vh;
             background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
                         radial-gradient(circle at bottom right, rgba(108, 117, 125, 0.1) 0%, transparent 50%);
             z-index: -1;
@@ -67,10 +66,14 @@
 
         .main-content {
             text-align: center;
-            padding: 40px 15px;
+            padding: 20px;
             width: 100%;
-            max-width: 100%;
+            max-width: 500px;
             animation: fadeInScale 0.8s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes fadeInScale {
@@ -84,6 +87,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .profile-pic {
@@ -112,6 +116,7 @@
             margin: 0;
             line-height: 1.2;
             text-shadow: 0 0 8px rgba(0, 198, 255, 0.4);
+            text-align: center;
         }
 
         .social-links {
@@ -122,6 +127,7 @@
             margin-top: 40px;
             width: 100%;
             justify-content: center;
+            align-items: center;
         }
 
         /* Stile uniforme per tutti i bottoni */
@@ -130,7 +136,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 18px 20px;
-            background-color: var(--button-base-color); /* Colore base uniforme */
+            background-color: var(--button-base-color);
             color: var(--text-light);
             text-decoration: none;
             border-radius: var(--border-radius);
@@ -142,7 +148,7 @@
             position: relative;
             overflow: hidden;
             letter-spacing: 0.8px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Ombra più scura per contrasto */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             width: calc(50% - 7.5px);
             max-width: 240px;
             min-height: 65px;
@@ -164,9 +170,9 @@
         }
 
         .social-button:hover {
-            background-color: var(--button-hover-color); /* Colore al hover uniforme */
+            background-color: var(--button-hover-color);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Ombra più grande al hover */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .social-button:active {
@@ -197,24 +203,28 @@
         .button-text {
             flex: 1;
             text-align: center;
-            margin-right: 35px; /* Compensa la larghezza dell'icona per centrare perfettamente */
+            margin-right: 35px;
         }
 
         .circle-image {
-            width: 100%;        /* L'immagine occupa il 100% della larghezza del suo contenitore */
-            height: 100%;       /* L'immagine occupa il 100% dell'altezza del suo contenitore */
-            object-fit: cover;  /* L'immagine coprirà il cerchio, ritagliando le parti in eccesso se necessario */
-            border-radius: 50%; /* Rende l'immagine perfettamente circolare */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        /* Responsive design */
+        /* Responsive design migliorato per mobile */
         @media (max-width: 600px) {
             body {
-                padding: 5px;
+                padding: 15px;
+                min-height: 100vh;
+                justify-content: center;
             }
 
             .main-content {
-                padding: 0px 5px;
+                padding: 20px 10px;
+                max-width: 100%;
+                width: 100%;
             }
 
             .profile-pic {
@@ -227,13 +237,14 @@
             }
 
             .social-links {
-                gap: 10px;
+                gap: 12px;
+                justify-content: center;
             }
 
             .social-button {
                 font-size: 0.9em;
                 padding: 15px 15px;
-                width: calc(50% - 5px);
+                width: calc(50% - 6px);
                 max-width: none;
                 min-width: 0;
             }
@@ -256,11 +267,22 @@
 
         @media (max-width: 400px) {
             body {
-                padding: 5px;
+                padding: 10px;
+                justify-content: center;
             }
 
             .main-content {
                 padding: 15px 5px;
+                width: 100%;
+            }
+
+            .profile-section {
+                margin-bottom: 25px;
+            }
+
+            .social-links {
+                gap: 10px;
+                margin-top: 30px;
             }
 
             .social-button {
@@ -271,6 +293,19 @@
 
             .button-text {
                 margin-right: 25px;
+            }
+        }
+
+        /* Aggiunta per dispositivi molto piccoli */
+        @media (max-width: 320px) {
+            .social-button {
+                padding: 10px 8px;
+                font-size: 0.8em;
+            }
+
+            .button-text {
+                margin-right: 20px;
+                font-size: 0.8em;
             }
         }
     </style>
