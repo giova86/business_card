@@ -30,16 +30,18 @@
 
         body {
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            max-height: 100vh;
             background-color: var(--background-dark);
             color: var(--text-light);
             flex-direction: column;
             overflow-x: hidden;
+            overflow-y: hidden;
             position: relative;
             width: 100%;
             max-width: 100vw;
@@ -66,7 +68,7 @@
 
         .main-content {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             width: 100%;
             max-width: 500px;
             animation: fadeInScale 0.8s ease-out forwards;
@@ -74,6 +76,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: 100%;
         }
 
         @keyframes fadeInScale {
@@ -83,7 +86,7 @@
 
         /* Stile per la foto profilo e il nome */
         .profile-section {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -91,23 +94,23 @@
         }
 
         .profile-pic {
-            width: 130px;
-            height: 130px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
-            margin-bottom: 18px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+            margin-bottom: 12px;
             animation: profileGlow 2s infinite alternate;
         }
 
         @keyframes profileGlow {
-            from { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
-            to { box-shadow: 0 0 30px rgba(0, 123, 255, 1); }
+            from { box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); }
+            to { box-shadow: 0 0 25px rgba(0, 123, 255, 1); }
         }
 
         .profile-name {
-            font-size: 2em;
+            font-size: 1.6em;
             font-weight: 600;
             letter-spacing: 1px;
             background: linear-gradient(90deg, var(--primary-color), #00c6ff);
@@ -119,12 +122,19 @@
             text-align: center;
         }
 
+        .profile-section h3 {
+            margin: 8px 0 0 0;
+            font-size: 1em;
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
         .social-links {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 40px;
+            gap: 8px;
+            margin-top: 15px;
             width: 100%;
             justify-content: center;
             align-items: center;
@@ -135,12 +145,12 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 18px 20px;
+            padding: 12px 16px;
             background-color: var(--button-base-color);
             color: var(--text-light);
             text-decoration: none;
             border-radius: var(--border-radius);
-            font-size: 1.1em;
+            font-size: 0.9em;
             font-weight: 500;
             transition: background-color var(--transition-speed) ease,
                         transform var(--transition-speed) ease,
@@ -148,10 +158,10 @@
             position: relative;
             overflow: hidden;
             letter-spacing: 0.8px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            width: calc(50% - 7.5px);
-            max-width: 240px;
-            min-height: 65px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            width: calc(50% - 4px);
+            max-width: 200px;
+            min-height: 50px;
         }
 
         .social-button::before {
@@ -182,28 +192,29 @@
 
         /* Contenitore per l'icona circolare */
         .icon-circle {
-            width: 35px;
-            height: 35px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
+            margin-right: 10px;
             flex-shrink: 0;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
         }
 
         /* Stile per le icone all'interno del cerchio */
         .icon-circle i {
-            font-size: 1.1em;
+            font-size: 0.9em;
         }
 
         /* Contenitore per il testo centrato */
         .button-text {
             flex: 1;
             text-align: center;
-            margin-right: 35px;
+            margin-right: 28px;
+            font-size: 0.9em;
         }
 
         .circle-image {
@@ -216,96 +227,221 @@
         /* Responsive design migliorato per mobile */
         @media (max-width: 600px) {
             body {
-                padding: 15px;
-                min-height: 100vh;
+                padding: 8px;
+                align-items: center;
                 justify-content: center;
+                overflow-y: hidden;
             }
 
             .main-content {
-                padding: 20px 10px;
+                padding: 8px;
                 max-width: 100%;
                 width: 100%;
-            }
-
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-name {
-                font-size: 1.8em;
-            }
-
-            .social-links {
-                gap: 12px;
+                height: auto;
                 justify-content: center;
             }
 
+            .profile-section {
+                margin-bottom: 15px;
+            }
+
+            .social-links {
+                gap: 6px;
+                margin-top: 10px;
+            }
+
             .social-button {
-                font-size: 0.9em;
-                padding: 15px 15px;
-                width: calc(50% - 6px);
-                max-width: none;
-                min-width: 0;
+                font-size: 0.85em;
+                padding: 10px 12px;
+                width: calc(50% - 3px);
+                min-height: 45px;
             }
 
             .icon-circle {
-                width: 30px;
-                height: 30px;
+                width: 25px;
+                height: 25px;
                 margin-right: 8px;
             }
 
-            .icon-circle i {
-                font-size: 1em;
-            }
-
             .button-text {
-                margin-right: 30px;
-                font-size: 0.9em;
+                margin-right: 25px;
+                font-size: 0.85em;
             }
         }
 
         @media (max-width: 400px) {
             body {
-                padding: 10px;
-                justify-content: center;
+                padding: 5px;
+                overflow-y: hidden;
             }
 
             .main-content {
-                padding: 15px 5px;
-                width: 100%;
+                padding: 5px;
+                justify-content: center;
             }
 
             .profile-section {
-                margin-bottom: 25px;
+                margin-bottom: 12px;
             }
 
             .social-links {
-                gap: 10px;
-                margin-top: 30px;
+                gap: 5px;
+                margin-top: 8px;
             }
 
             .social-button {
-                padding: 12px 10px;
-                font-size: 0.85em;
-                width: calc(50% - 5px);
+                padding: 8px 10px;
+                font-size: 0.8em;
+                min-height: 40px;
             }
 
             .button-text {
-                margin-right: 25px;
+                margin-right: 22px;
+                font-size: 0.8em;
             }
         }
 
-        /* Aggiunta per dispositivi molto piccoli */
         @media (max-width: 320px) {
+            body {
+                overflow-y: hidden;
+            }
+
+            .main-content {
+                justify-content: center;
+            }
+
             .social-button {
-                padding: 10px 8px;
-                font-size: 0.8em;
+                padding: 6px 8px;
+                font-size: 0.75em;
+                min-height: 38px;
             }
 
             .button-text {
                 margin-right: 20px;
+                font-size: 0.75em;
+            }
+
+            .icon-circle {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+        /* Media query per schermi mobili con altezza limitata */
+        @media (max-height: 700px) {
+            body {
+                align-items: center;
+                justify-content: center;
+                overflow-y: hidden;
+            }
+
+            .main-content {
+                justify-content: center;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-name {
+                font-size: 1.4em;
+            }
+
+            .profile-section h3 {
+                font-size: 0.9em;
+            }
+
+            .social-button {
+                min-height: 40px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            body {
+                align-items: center;
+                justify-content: center;
+                overflow-y: hidden;
+            }
+
+            .main-content {
+                justify-content: center;
+            }
+
+            .profile-pic {
+                width: 70px;
+                height: 70px;
+            }
+
+            .profile-name {
+                font-size: 1.2em;
+            }
+
+            .profile-section h3 {
                 font-size: 0.8em;
+            }
+
+            .social-button {
+                min-height: 35px;
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+
+            .social-links {
+                gap: 4px;
+            }
+        }
+
+        /* Media query specifica per schermi molto bassi */
+        @media (max-height: 500px) {
+            body {
+                align-items: center;
+                justify-content: center;
+                overflow-y: hidden;
+            }
+
+            .main-content {
+                justify-content: center;
+            }
+
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-name {
+                font-size: 1.1em;
+            }
+
+            .profile-section h3 {
+                font-size: 0.7em;
+                margin: 4px 0 0 0;
+            }
+
+            .profile-section {
+                margin-bottom: 8px;
+            }
+
+            .social-button {
+                min-height: 30px;
+                padding: 4px 8px;
+                font-size: 0.7em;
+            }
+
+            .social-links {
+                gap: 3px;
+                margin-top: 5px;
+            }
+
+            .icon-circle {
+                width: 20px;
+                height: 20px;
+            }
+
+            .button-text {
+                margin-right: 18px;
+                font-size: 0.7em;
             }
         }
     </style>
