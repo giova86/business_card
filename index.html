@@ -2,192 +2,201 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giovanni Bocchi, Ph.D.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Giovanni Bocchi, Ph.D. — Data Scientist</title>
+    <meta name="description" content="Biglietto da visita digitale di Giovanni Bocchi, Ph.D., Data Scientist. Portfolio e profili social in un unico posto.">
+
+    <!-- Theme / PWA -->
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="static/favicon.png">
+    <link rel="apple-touch-icon" href="static/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="G. Bocchi">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Giovanni Bocchi, Ph.D. — Data Scientist">
+    <meta property="og:description" content="Biglietto da visita digitale: portfolio e profili social di Giovanni Bocchi, Data Scientist.">
+    <meta property="og:image" content="https://giova86.github.io/business_card/static/icon-512.png">
+    <meta property="og:url" content="https://giova86.github.io/business_card/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Giovanni Bocchi, Ph.D. — Data Scientist">
+    <meta name="twitter:description" content="Biglietto da visita digitale: portfolio e profili social di Giovanni Bocchi, Data Scientist.">
+    <meta name="twitter:image" content="https://giova86.github.io/business_card/static/icon-512.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-color: #007bff; /* Blu vibrante per il bordo foto e gradiente nome */
-            --background-dark: #1a1a1d; /* Sfondo molto scuro */
-            --text-light: #f8f9fa; /* Testo chiaro */
-            --button-base-color: #2c3e50; /* Un blu/grigio scuro per i bottoni */
-            --button-hover-color: #34495e; /* Colore più scuro al passaggio */
-            --border-radius: 58px;
-            --transition-speed: 0.3s;
-
-            --primary-color: #00d2ff;
-            --secondary-color: #3a7bd5;
-            --accent-color: #ff6b6b;
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --accent: #ff6b6b;
             --bg-dark: #0a0a0a;
             --bg-darker: #050505;
             --text-light: #ffffff;
             --text-gray: #b0b0b0;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-bg-hover: rgba(255, 255, 255, 0.10);
+            --glass-border: rgba(255, 255, 255, 0.14);
+            --glass-blur: 14px;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+
+            --radius: 18px;
+            --radius-pill: 999px;
+            --transition: 0.3s ease;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         html, body {
-            height: 100%; /* HTML and Body must be 100% height for vh to work correctly */
+            height: 100%;
             margin: 0;
-            padding-left: 10px; /* Remove padding from body to ensure full height for centering */
-            padding-right: 10px; /* Remove padding from body to ensure full height for centering */
-            overflow-x: hidden; /* Prevents horizontal scrollbar */
+            padding: 0;
+            overflow-x: hidden;
             width: 100%;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             display: flex;
-            justify-content: center; /* Centers horizontally */
-            align-items: center; /* Centers vertically when content is less than viewport height */
-            min-height: 100%; /* Ensures body takes at least full viewport height */
-            background-color: var(--background-dark);
-            background: var(--bg-dark);
-
+            justify-content: center;
+            align-items: center;
+            min-height: 100%;
+            min-height: 100dvh;
+            background-color: var(--bg-dark);
             color: var(--text-light);
-            flex-direction: column; /* Stacks items vertically */
+            flex-direction: column;
             position: relative;
-            max-width: 100vw;
+            padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* ---------- Animated background ---------- */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: -1;
-            background: radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+            background:
+                radial-gradient(circle at 18% 78%, rgba(0, 210, 255, 0.14) 0%, transparent 48%),
+                radial-gradient(circle at 82% 22%, rgba(255, 107, 107, 0.12) 0%, transparent 48%),
+                var(--bg-darker);
         }
         .particle {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: var(--primary-color);
+            background: var(--primary);
             border-radius: 50%;
+            opacity: 0.5;
             animation: float 6s ease-in-out infinite;
         }
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
             50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
         }
-        /* Effetto particelle di sfondo */
-        /* body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at bottom right, rgba(108, 117, 125, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            animation: backgroundPulse 15s infinite alternate;
-        } */
 
-        @keyframes backgroundPulse {
-            from { opacity: 0.8; transform: scale(1); }
-            to { opacity: 1; transform: scale(1.05); }
-        }
-
+        /* ---------- Main glass card ---------- */
         .main-content {
-            text-align: center;
-            padding: 20px; /* Apply padding inside the main content wrapper */
             width: 100%;
-            max-width: 500px;
-            animation: fadeInScale 0.8s ease-out forwards;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* Removed min-height: 100vh here to avoid conflicts and allow natural expansion */
+            max-width: 480px;
+            text-align: center;
+            padding: 36px 26px 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeInScale 0.7s ease-out forwards;
         }
-
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(12px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Stile per la foto profilo e il nome */
+        /* ---------- Profile ---------- */
         .profile-section {
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
-
         .profile-pic {
-            width: 130px;
-            height: 130px;
+            width: 128px;
+            height: 128px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
-            margin-bottom: 18px;
-            animation: profileGlow 2s infinite alternate;
+            border: 4px solid var(--primary);
+            margin-bottom: 16px;
+            box-shadow: 0 0 24px rgba(0, 210, 255, 0.55);
+            animation: profileGlow 2.4s ease-in-out infinite alternate;
         }
-
         @keyframes profileGlow {
-            from { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
-            to { box-shadow: 0 0 30px rgba(0, 123, 255, 1); }
+            from { box-shadow: 0 0 20px rgba(0, 210, 255, 0.45); }
+            to { box-shadow: 0 0 34px rgba(0, 210, 255, 0.9); }
         }
-
         .profile-name {
-            font-size: 2em;
-            font-weight: 600;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, var(--primary-color), #00c6ff);
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, var(--primary), #6fb4ff);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
             line-height: 1.2;
-            text-shadow: 0 0 8px rgba(0, 198, 255, 0.4);
-            text-align: center;
+        }
+        .profile-role {
+            margin: 8px 0 0;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-gray);
         }
 
+        /* ---------- Links grid (1 col mobile, 2 col desktop) ---------- */
         .social-links {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        @media (min-width: 560px) {
+            .social-links { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Stile uniforme per tutti i bottoni */
         .social-button {
-            display: flex;
+            display: grid;
+            grid-template-columns: 40px 1fr 40px;
             align-items: center;
-            justify-content: flex-start;
-            padding: 18px 20px;
-            background-color: var(--button-base-color);
+            padding: 12px 16px;
+            min-height: 62px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
             color: var(--text-light);
             text-decoration: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1em;
+            font-size: 1rem;
             font-weight: 500;
-            transition: background-color var(--transition-speed) ease,
-                        transform var(--transition-speed) ease,
-                        box-shadow var(--transition-speed) ease;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
             position: relative;
             overflow: hidden;
-            letter-spacing: 0.8px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            width: calc(50% - 7.5px);
-            max-width: 240px;
-            min-height: 65px;
+            transition: transform var(--transition), background var(--transition),
+                        box-shadow var(--transition), border-color var(--transition);
         }
-
+        /* trailing spacer keeps label optically centered against the icon */
+        .social-button::after {
+            content: '';
+        }
         .social-button::before {
             content: '';
             position: absolute;
@@ -195,364 +204,133 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
             transition: left 0.6s ease;
         }
-
-        .social-button:hover::before {
-            left: 100%;
+        .social-button:hover {
+            background: var(--glass-bg-hover);
+            border-color: rgba(0, 210, 255, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 210, 255, 0.25);
         }
-
-        /* .social-button:hover {
-            background-color: var(--button-hover-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        } */
-
+        .social-button:hover::before { left: 100%; }
         .social-button:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35);
         }
 
-        /* Contenitore per l'icona circolare */
         .icon-circle {
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
+            overflow: hidden;
             flex-shrink: 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+            box-shadow: 0 0 14px rgba(0, 210, 255, 0.45);
         }
-
-        /* Stile per le icone all'interno del cerchio */
-        .icon-circle i {
-            font-size: 1.1em;
-        }
-
-        /* Contenitore per il testo centrato */
-        .button-text {
-            flex: 1;
-            text-align: center;
-            margin-right: 35px;
-        }
-
         .circle-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
+            display: block;
+        }
+        .button-text {
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* Responsive design migliorato per mobile */
-        @media (max-width: 600px) {
-            body {
-                padding: 0; /* Ensures no extra padding on small screens */
-            }
-
-            .main-content {
-                padding: 20px 10px;
-                max-width: 100%;
-                width: 100%;
-            }
-
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-name {
-                font-size: 1.8em;
-            }
-
-            .social-links {
-                gap: 12px;
-                justify-content: center;
-            }
-
-            .social-button {
-                font-size: 0.9em;
-                padding: 10px 15px;
-                width: calc(50% - 6px);
-                max-width: none;
-                min-width: 0;
-            }
-
-            .icon-circle {
-                width: 30px;
-                height: 30px;
-                margin-right: 8px;
-            }
-
-            .icon-circle i {
-                font-size: 1em;
-            }
-
-            .button-text {
-                margin-right: 30px;
-                font-size: 0.9em;
-            }
+        /* ---------- Small phones ---------- */
+        @media (max-width: 360px) {
+            .main-content { padding: 28px 18px 24px; }
+            .profile-pic { width: 108px; height: 108px; }
+            .profile-name { font-size: 1.65rem; }
+            .social-button { font-size: 0.92rem; min-height: 56px; }
         }
 
-        @media (max-width: 400px) {
-            body {
-                padding: 0;
-            }
-
-            .main-content {
-                padding: 15px 5px;
-                width: 100%;
-            }
-
-            .profile-section {
-                margin-bottom: 25px;
-            }
-
-            .social-links {
-                gap: 10px;
-                margin-top: 30px;
-            }
-
-            .social-button {
-                padding: 12px 10px;
-                font-size: 0.85em;
-                width: calc(50% - 5px);
-            }
-
-            .button-text {
-                margin-right: 25px;
-            }
-        }
-
-        /* Aggiunta per dispositivi molto piccoli */
-        @media (max-width: 320px) {
-            .social-button {
-                padding: 10px 8px;
-                font-size: 0.8em;
-            }
-
-            .button-text {
-                margin-right: 20px;
-                font-size: 0.8em;
-            }
+        /* ---------- Reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            .particle,
+            .profile-pic,
+            .main-content { animation: none !important; }
+            .social-button,
+            .social-button::before { transition: none !important; }
         }
     </style>
 </head>
 <body>
-  <div class="bg-animation" id="bgAnimation"></div>
+    <div class="bg-animation" id="bgAnimation"></div>
 
-    <div class="main-content">
-
+    <main class="main-content">
         <div class="profile-section">
-            <img src="static/gbocchi.png" alt="La tua foto profilo" class="profile-pic">
+            <img src="static/gbocchi.png" alt="Foto di Giovanni Bocchi" class="profile-pic" width="128" height="128">
             <h1 class="profile-name">Giovanni Bocchi, Ph.D.</h1>
-            <h3>Data Scientist</h3>
+            <p class="profile-role">Data Scientist</p>
         </div>
 
-        <div class="social-links">
-
-            <a href="https://giova86.github.io/Portfolio/" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/gbocchi.png" alt="Portfolio Icon" class="circle-image">
-                </div>
-                <div class="button-text">Portfolio</div>
+        <nav class="social-links" aria-label="Profili e contatti">
+            <a href="https://giova86.github.io/Portfolio/" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/gbocchi.png" alt="" class="circle-image"></span>
+                <span class="button-text">Portfolio</span>
             </a>
-
-            <a href="https://www.linkedin.com/in/giovannibocchi" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/linkedin.png" alt="LinkedIn Icon" class="circle-image">
-                </div>
-                <div class="button-text">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/giovannibocchi" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/linkedin.png" alt="" class="circle-image"></span>
+                <span class="button-text">LinkedIn</span>
             </a>
-
-            <a href="https://github.com/giova86" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/github.png" alt="GitHub Icon" class="circle-image">
-                </div>
-                <div class="button-text">GitHub</div>
+            <a href="https://github.com/giova86" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/github.png" alt="" class="circle-image"></span>
+                <span class="button-text">GitHub</span>
             </a>
-
-            <a href="https://www.instagram.com/ilgiova86" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/ig.png" alt="Instagram Icon" class="circle-image">
-                </div>
-                <div class="button-text">Instagram</div>
+            <a href="https://www.instagram.com/ilgiova86" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/ig.png" alt="" class="circle-image"></span>
+                <span class="button-text">Instagram</span>
             </a>
-
-            <a href="https://www.facebook.com/gbocchi1" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/facebook.png" alt="Facebook Icon" class="circle-image">
-                </div>
-                <div class="button-text">Facebook</div>
+            <a href="https://www.facebook.com/gbocchi1" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/facebook.png" alt="" class="circle-image"></span>
+                <span class="button-text">Facebook</span>
             </a>
-            <a href="https://x.com/gbocchi86" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/x.png" alt="X Icon" class="circle-image">
-                </div>
-                <div class="button-text">X</div>
+            <a href="https://x.com/gbocchi86" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/x.png" alt="" class="circle-image"></span>
+                <span class="button-text">X</span>
             </a>
-            <a href="https://online-go.com/player/1808298/" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/go.png" alt="Online Go Server Icon" class="circle-image">
-                </div>
-                <div class="button-text">OGS</div>
+            <a href="https://online-go.com/player/1808298/" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/go.png" alt="" class="circle-image"></span>
+                <span class="button-text">OGS</span>
             </a>
-            <a href="https://www.chess.com/member/jtitor" target="_blank" class="social-button">
-                <div class="icon-circle">
-                    <img src="static/chess.png" alt="Chess.com Icon" class="circle-image">
-                </div>
-                <div class="button-text">Chess.com</div>
+            <a href="https://www.chess.com/member/jtitor" target="_blank" rel="noopener" class="social-button">
+                <span class="icon-circle"><img src="static/chess.png" alt="" class="circle-image"></span>
+                <span class="button-text">Chess.com</span>
             </a>
-        </div>
-    </div>
+        </nav>
+    </main>
 
     <script>
-    // Animated background particles
-    function createParticles() {
-        const bgAnimation = document.getElementById('bgAnimation');
-        const particleCount = 50;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            bgAnimation.appendChild(particle);
-        }
-    }
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+        // Lightweight floating particles (skipped if the user prefers reduced motion)
+        function createParticles() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const bg = document.getElementById('bgAnimation');
+            const count = 40;
+            const frag = document.createDocumentFragment();
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = (i * 97 % 100) + '%';
+                p.style.top = (i * 53 % 100) + '%';
+                p.style.animationDelay = (i % 6) + 's';
+                p.style.animationDuration = (3 + (i % 4)) + 's';
+                frag.appendChild(p);
             }
-        });
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+            bg.appendChild(frag);
         }
-    });
 
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
+        document.addEventListener('DOMContentLoaded', createParticles);
 
-    // Observe all fade-in elements
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Form submission handler
-    // document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //     // Get form data
-    //     const formData = new FormData(this);
-    //     const name = this.querySelector('input[type="text"]').value;
-    //     // Simple validation
-    //     if (name.trim() === '') {
-    //         alert('Per favore, compila tutti i campi obbligatori.');
-    //         return;
-    //     }
-    //     // Simulate form submission
-    //     const submitButton = this.querySelector('button');
-    //     const originalText = submitButton.textContent;
-    //     submitButton.textContent = 'Invio in corso...';
-    //     submitButton.disabled = true;
-    //     setTimeout(() => {
-    //         alert('Messaggio inviato con successo! Ti risponderò presto.');
-    //         this.reset();
-    //         submitButton.textContent = originalText;
-    //         submitButton.disabled = false;
-    //     }, 1500);
-    // });
-
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        const rate = scrolled * -0.5;
-        if (hero) {
-            hero.style.transform = `translateY(${rate}px)`;
+        // PWA service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            });
         }
-    });
-
-    // Dynamic typing effect for hero title (non usato attualmente, ma presente nel codice originale)
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.innerHTML = '';
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-
-    // Initialize animations and effects
-    document.addEventListener('DOMContentLoaded', function() {
-        createParticles();
-        // Add subtle hover effects to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                // Questo gestisce l'effetto hover principale già nel CSS
-            });
-            card.addEventListener('mouseleave', function() {
-                // Questo gestisce l'effetto hover principale già nel CSS
-            });
-        });
-        // Add hover effect to skill items
-        document.querySelectorAll('.skill-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(0, 210, 255, 0.1)';
-            });
-            item.addEventListener('mouseleave', function() {
-                this.style.background = 'var(--card-bg)';
-            });
-        });
-    });
-
-    // Add scroll-triggered animations for better performance
-    let ticking = false;
-    function updateScrollAnimations() {
-        const scrollTop = window.pageYOffset;
-        // Update parallax elements (rimosso l'effetto parallax dalle card progetto per coerenza con l'hover)
-        ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateScrollAnimations);
-            ticking = true;
-        }
-    });
     </script>
-
-
 </body>
 </html>
